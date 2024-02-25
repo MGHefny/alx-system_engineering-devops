@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #time 12 horus and 59 minutes
-#   hours from 0 to 12
-#   minutes from 1 to 59
+#display hours from 0 to 12
+#display minutes from 1 to 59
 
 h=0
 

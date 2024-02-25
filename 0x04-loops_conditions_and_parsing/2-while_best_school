@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#"Best School" 10 time
+
+x=10
+
+while [ $x -lt 20 ]
+do
+  echo "Best School"
+  (( x++ ))
+done

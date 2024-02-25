@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+#   "bad luck" 4th
+#   "good luck" 8th
+#   "Best School" other
+
+x=10
+
+while [ $x -lt 20 ]
+do
+  if [ $x -eq 13 ]
+  then
+    echo "bad luck"
+  elif [ $x -eq 17 ]
+  then
+    echo "good luck"
+  else
+    echo "Best School"
+  fi
+  (( x++ ))
+done

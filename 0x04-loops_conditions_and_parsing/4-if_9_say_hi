@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+#"Best School" 10 time
+#On 9th "Hi" before "Best School"
+
+x=10
+
+while [ $x -lt 20 ]
+do
+  if [ $x -eq 19 ]
+  then
+    echo "Hi"
+  fi
+  echo "Best School"
+  (( x++ ))
+done

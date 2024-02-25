@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# processes whose name contains the word "bash"
+
+pgrep bash -l

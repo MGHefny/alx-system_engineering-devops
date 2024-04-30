@@ -13,8 +13,8 @@ frontend hefny.tech
 
 backend web_servers
         balance roundrobin
-        server 64820-web-01 54.172.206.154:80
-        server 64820-web-02 52.86.162.173:80
+        server 64820-web-01 100.25.148.74:80
+        server 64820-web-02 100.25.38.55:80
 " >> /etc/haproxy/haproxy.cfg
 
 # Restart HAproxy

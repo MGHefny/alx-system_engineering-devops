@@ -16,7 +16,7 @@ if [[ -z $check ]]; then
 fi
 
 # html page
-echo "Hello World!" > /var/www/html/index.html
+echo "Hello World!" | sudo tee /var/www/html/index.html >/dev/null
 
 # conf redirection
 check=$(grep "redirect_me" /etc/nginx/sites-available/default)
@@ -29,7 +29,7 @@ fi
 check=$(grep "error_page 404" /etc/nginx/sites-available/default)
 err="\\\n\terror_page 404 /custom_404.html;\n"
 if [[ -z $check ]]; then
-    echo "Ceci n'est pas une page" > /var/www/html/custom_404.html
+    echo "Ceci n'est pas une page" | sudo tee /var/www/html/custom_404.html >/dev/null
     sudo sed -i "40i $err" /etc/nginx/sites-available/default
 fi
 

@@ -1,33 +1,32 @@
 #!/usr/bin/env bash
 # conf
-
 # nginx in web-01
 sudo apt-get -y update
 sudo apt-get -y install nginx
 sudo ufw allow 'Nginx HTTP'
 
-# head debugging
-the_host=$(hostname)
-head="\\\n\tadd_header X-Served-By $the_host;\n"
-check=$(grep "X-Server-by" /etc/nginx/sites-available/default)
-if [[ -z $check ]]; then
-    sudo sed -i "23i $head" /etc/nginx/sites-available/default
+# name debugging
+hostt=$(hostname)
+hed="\\\n\tadd_header X-Served-By $hostt;\n"
+chk=$(grep "X-Server-by" /etc/nginx/sites-available/default)
+if [[ -z $chk ]]; then
+    sudo sed -i "23i $hed" /etc/nginx/sites-available/default
 fi
 
-# html file
+# html file 
 echo "Hello World!" > /var/www/html/index.html
 
-# nginx redirection
-check=$(grep "redirect_me" /etc/nginx/sites-available/default)
+# configuration redirection
+chk=$(grep "redirect_me" /etc/nginx/sites-available/default)
 str="\\\n\tlocation /redirect_me {\n\t\t return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n\t}\n"
-if [[ -z $check ]]; then
+if [[ -z $chk ]]; then
     sudo sed -i "42i $str" /etc/nginx/sites-available/default
 fi
 
-# the error 404
-check=$(grep "error_page 404" /etc/nginx/sites-available/default)
+# the err page 404
+chk=$(grep "error_page 404" /etc/nginx/sites-available/default)
 err="\\\n\terror_page 404 /custom_404.html;\n"
-if [[ -z $check ]]; then
+if [[ -z $chk ]]; then
     echo "Ceci n'est pas une page" > /var/www/html/custom_404.html
     sudo sed -i "40i $err" /etc/nginx/sites-available/default
 fi

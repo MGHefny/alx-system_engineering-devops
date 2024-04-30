@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# HAproxy
+
+# Ins HAproxy in server
+sudo apt-get -y update
+sudo apt-get -y install haproxy
+
+# Conf request
+echo "
+frontend hefny.tech
+        bind 0:80
+        default_backend web_servers
+
+backend web_servers
+        balance roundrobin
+        server 64820-web-01 54.172.206.154:80
+        server 64820-web-02 52.86.162.173:80
+" >> /etc/haproxy/haproxy.cfg
+
+# Restart HAproxy
+sudo service haproxy restart

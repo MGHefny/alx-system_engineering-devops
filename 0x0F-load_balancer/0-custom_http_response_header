@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+# conf
+# nginx in web-01
+sudo apt-get -y update
+sudo apt-get -y install nginx
+sudo ufw allow 'Nginx HTTP'
+
+# name debugging
+the_host=$(hostname)
+head="\\\n\tadd_header X-Served-By $the_host;\n"
+check=$(grep "X-Server-by" /etc/nginx/sites-available/default)
+if [[ -z $check ]]; then
+    sudo sed -i "23i $head" /etc/nginx/sites-available/default
+fi
+
+# html file
+echo "Hello World!" > /var/www/html/index.html
+
+# configuration redirection
+check=$(grep "redirect_me" /etc/nginx/sites-available/default)
+str="\\\n\tlocation /redirect_me {\n\t\t return 301 https://www.youtube.com/watch?v=3MbaGJN2ioQ;\n\t}\n"
+if [[ -z $check ]]; then
+    sudo sed -i "42i $str" /etc/nginx/sites-available/default
+fi
+
+# the err page 404
+check=$(grep "error_page 404" /etc/nginx/sites-available/default)
+err="\\\n\terror_page 404 /custom_404.html;\n"
+if [[ -z $check ]]; then
+    echo "Ceci n'est pas une page" > /var/www/html/custom_404.html
+    sudo sed -i "40i $err" /etc/nginx/sites-available/default
+fi
+
+# restart nginx
+sudo service nginx restart

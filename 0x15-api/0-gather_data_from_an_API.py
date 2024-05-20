@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """emp data"""
 
-import requests
 import re
+import requests
 import sys
 
 api_url = "https://jsonplaceholder.typicode.com"

@@ -2,8 +2,8 @@
 """emp data"""
 
 import requests
-import sys
 import re
+import sys
 
 api_url = "https://jsonplaceholder.typicode.com"
 

@@ -17,7 +17,7 @@ if __name__ == '__main__':
             to_do = list(filter(lambda i: i.get('userId') == id, task_respo))
             comp_task = list(filter(lambda i: i.get('completed'), to_do))            
             print(
-                'Employee {} is done with to_do({}/{}):'.format(
+                'Employee {} is done with tasks({}/{}):'.format(
                     name_emplo,
                     len(comp_task),
                     len(to_do)

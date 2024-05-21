@@ -11,10 +11,10 @@ if __name__ == '__main__':
     u_name = req.json().get('username')
     task_respo = f'{url_user}/todos'
     req = requests.get(task_respo)
-    tks = req.json()
+    tasks = req.json()
 
     with open('{}.csv'.format(user_id), 'w') as csvfile:
-        for task_respo in tks:
+        for task_respo in tasks:
             comp = task_respo.get('completed')
             title_task = task_respo.get('title')
             csvfile.write('"{}","{}","{}","{}"\n'.format(

@@ -9,13 +9,13 @@ if __name__ == '__main__':
     user_respo = f'{api_url}/users/{user_id}'
     req = requests.get(url_user)
     u_name = req.json().get('username')
-    task_respo = f'{url_user}/todos'
-    req = requests.get(task_respo)
+    task = f'{url_user}/todos'
+    req = requests.get(task)
     tasks = req.json()
 
     with open('{}.csv'.format(user_id), 'w') as csvfile:
-        for task_respo in tasks:
-            comp = task_respo.get('completed')
-            title_task = task_respo.get('title')
+        for task in tasks:
+            comp = task.get('completed')
+            title_task = task.get('title')
             csvfile.write('"{}","{}","{}","{}"\n'.format(
                 user_id, u_name, comp, title_task))

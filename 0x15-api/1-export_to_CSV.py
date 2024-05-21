@@ -13,9 +13,9 @@ if __name__ == '__main__':
     reqq = requests.get(tsk)
     tsks = reqq.json()
 
-    with open('{}.csv'.format(user_id), 'w') as csvfile:
+    with open('{}.csv'.format(user_id), 'w') as csvf:
         for tsk in tsks:
             comp = tsk.get('completed')
             t_tsk = tsk.get('title')
-            csvfile.write('"{}","{}","{}","{}"\n'.format(
+            csvf.write('"{}","{}","{}","{}"\n'.format(
                 user_id, u_name, comp, t_tsk))

@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """api"""
 
-from requests import get
+import requests
 
 
 def number_of_subscribers(subreddit):

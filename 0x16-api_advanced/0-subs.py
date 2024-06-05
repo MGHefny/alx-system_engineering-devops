@@ -1,17 +1,18 @@
 #!/usr/bin/python3
 """api"""
-import requests
+
+from requests import get
 
 
 def number_of_subscribers(subreddit):
-    """test"""
-    api_inf = requests.get(
-        "https://www.reddit.com/r/{}/about.json".format(subreddit),
-        headers={"User-agent": "agent_browser"},
-        allow_redirects=False,
-    )
-    if api_inf.status_code != 200:
+    """test subscriber"""
+    if subreddit is None or not isinstance(subreddit, str):
         return 0
-
-
-return api_inf.json().get("data").get("subscribers")
+    api_url = 'https://www.reddit.com/r/{}/about.json'.format(subreddit)
+    users = {'User-Agent': 'Google Chrome V 125.0.6422.142'}
+    resp = get(api_url, headers=users)
+    res = resp.json()
+    try:
+        return res.get('data').get('subscribers')
+    except Exception:
+        return 0

@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """api"""
-import req
+import requests
 
 
 def number_of_subscribers(subreddit):

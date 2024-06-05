@@ -2,6 +2,7 @@
 """api"""
 
 import requests
+from requests import get
 
 
 def number_of_subscribers(subreddit):

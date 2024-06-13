@@ -1,4 +1,4 @@
 exec {'max-file-open':
-  command => 'sed -i "s/15/5000/" /etc/default/nginx && sudo service nginx restart',
+  command => 'sed -i "s/15/10000/" /etc/default/nginx && sudo service nginx restart',
   path    => '/usr/local/bin/:/bin/',
 }
